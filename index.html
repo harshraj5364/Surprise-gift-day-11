@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Things I Never Really Say ❤️</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{
+  background:
+    radial-gradient(circle at 50% 18%,rgba(255,255,255,.9),transparent 28%),
+    linear-gradient(145deg,#f7f1eb,#eee5dd);
+  color:#302b29;
+  font-family:Georgia,"Times New Roman",serif;
+}
+.page{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  padding:24px;position:relative;
+}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.13;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+}
+.shell{
+  width:min(680px,94vw);height:min(760px,90vh);
+  display:flex;align-items:center;justify-content:center;position:relative;
+}
+.screen{
+  width:100%;height:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  transition:opacity .55s ease,transform .55s ease;
+}
+.kicker{font:600 11px/1.2 Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#927e74;margin-bottom:22px}
+h1{font-size:clamp(32px,7vw,58px);font-weight:400;line-height:1.05;margin:0 0 15px}
+.subtitle{font-size:17px;line-height:1.7;color:#776d68;max-width:420px;margin:0 auto}
+.heart{font-size:28px;margin-top:30px;animation:pulse 2.4s ease-in-out infinite}
+.start{
+  margin-top:35px;border:0;background:transparent;color:#554943;
+  font:italic 17px Georgia,serif;cursor:pointer;padding:12px 18px;
+  border-bottom:1px solid #c7b8ae;transition:.25s;
+}
+.start:hover{transform:translateY(-2px);border-color:#806d64}
+.card{
+  width:min(590px,94vw);padding:46px 42px 42px;background:rgba(255,253,250,.72);
+  border:1px solid rgba(104,87,77,.16);box-shadow:0 18px 60px rgba(65,45,35,.10);
+  backdrop-filter:blur(5px);position:relative;
+}
+.number{font:600 11px Arial,sans-serif;letter-spacing:3px;color:#a28e83;margin-bottom:25px}
+.card h2{font-size:clamp(25px,5vw,37px);font-weight:400;margin:0 0 20px;line-height:1.15}
+.card p{font-size:18px;line-height:1.8;margin:0;color:#4e4541}
+.next{
+  margin-top:32px;border:0;background:none;cursor:pointer;color:#8a7166;
+  font:15px Arial,sans-serif;letter-spacing:1px;padding:10px 4px;
+}
+.next span{display:inline-block;transition:transform .25s}
+.next:hover span{transform:translateX(5px)}
+.progress{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);
+  font:10px Arial,sans-serif;letter-spacing:2px;color:#aa9b93}
+.final h1{max-width:620px}
+.final .message{font-size:19px;line-height:1.9;color:#655a55;max-width:530px}
+.final .small{margin-top:25px;font:11px Arial,sans-serif;letter-spacing:2px;color:#a18e84}
+.fadeout{opacity:0;transform:translateY(10px)}
+.fadein{animation:appear .75s ease both}
+@keyframes appear{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@media(max-width:520px){
+  .page{padding:16px}
+  .card{padding:36px 25px 32px}
+  .card p{font-size:16.5px;line-height:1.75}
+  .subtitle{font-size:15.5px}
+}
+</style>
+</head>
+<body>
+<div class="page"><div class="grain"></div><main class="shell" id="app"></main></div>
+<script>
+const notes=[
+["I notice you more than you think.","I notice the little things you probably don't even realise I notice. The way you talk, your random reactions, the little things you post… yeah, I pay attention. 😭❤️"],
+["I actually look forward to your messages.","Even on a completely normal day, seeing your message somehow makes it a little better. 🫶🏼"],
+["I miss talking to you sometimes.","I don't always say it, but yeah… there are days when I just randomly wish you were online so I could talk to you. ❤️"],
+["You make me smile without trying.","Sometimes it's something you said hours ago and suddenly I'm sitting there smiling like an idiot 😭"],
+["I worry about you sometimes.","Not in a weird way 😭 I just genuinely care about how you're doing, even when I don't always ask."],
+["I like knowing you.","Out of all the random people I could've met, I'm really glad somehow I got to know you. ❤️"],
+["You've become a part of my routine.","Talking to you has slowly become one of those little things I just expect in my day… and honestly, I don't mind it at all. ☀️"],
+["And maybe the biggest one…","I don't know exactly when it happened, but somewhere along the way, you became pretty special to me. I don't say that very often… but it's true. ❤️"]
+];
+
+const app=document.getElementById("app");
+function renderIntro(){
+ app.innerHTML=`<section class="screen fadein">
+   <div class="kicker">day 11 · just between us</div>
+   <h1>Things I Never<br>Really Say ❤️</h1>
+   <p class="subtitle">Some thoughts I usually keep to myself…<br>but maybe you should know them.</p>
+   <div class="heart">♡</div>
+   <button class="start" onclick="showCard(0)">read them?</button>
+ </section>`;
+}
+function showCard(i){
+ const [title,text]=notes[i];
+ app.innerHTML=`<section class="screen fadein">
+   <article class="card">
+    <div class="number">${String(i+1).padStart(2,"0")} / ${notes.length}</div>
+    <h2>${title}</h2>
+    <p>${text}</p>
+    <button class="next" onclick="${i+1<notes.length?`showCard(${i+1})`:`showFinal()`}">
+      ${i+1<notes.length?"keep reading":"one more thing"} <span>→</span>
+    </button>
+   </article>
+   <div class="progress">take your time</div>
+ </section>`;
+}
+function showFinal(){
+ app.innerHTML=`<section class="screen final fadein">
+   <div class="kicker">okay… that was a lot 😭</div>
+   <h1>I'm really glad<br>it's you, Riya. ❤️</h1>
+   <p class="message">Maybe I don't say these things enough.<br>But I hope you know how much you mean to me.</p>
+   <div class="small">— from me, to my sunshine ☀️</div>
+ </section>`;
+}
+renderIntro();
+</script>
+</body>
+</html>
